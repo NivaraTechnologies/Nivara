@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 # Nivara Motion
 
 Lovable Prompt — Nivara Technologies (Dark Bento, Cinematic Motion — v4)
@@ -142,3 +143,6 @@ cd <repository-name>
 npm i
 npm run dev
 ```
+=======
+# Nivara
+>>>>>>> b8ef1bad43879097c9a06373958d6d8bdb64c76e
