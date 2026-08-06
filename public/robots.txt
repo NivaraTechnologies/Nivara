@@ -1,14 +1,13 @@
-User-agent: Googlebot
-Allow: /
+import { MetadataRoute } from 'next'
 
-User-agent: Bingbot
-Allow: /
-
-User-agent: Twitterbot
-Allow: /
-
-User-agent: facebookexternalhit
-Allow: /
-
-User-agent: *
-Allow: /
+export default function robots(): MetadataRoute.Robots {
+  return {
+    rules: [
+      {
+        userAgent: '*',
+        allow: '/',
+      },
+    ],
+    sitemap: 'https://nivaratechnologies.in/sitemap.xml',
+  }
+}
