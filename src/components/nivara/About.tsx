@@ -510,7 +510,7 @@ export function About() {
             About Us
           </span>
           <h1 className="mt-6 font-display text-4xl font-extrabold tracking-[-0.04em] md:text-5xl">
-            We're <span className="text-brand-navy">Nivara Technologies</span>
+            We're <span className="text-brand-navy">Nivara</span> Technologies
           </h1>
           <p className="mt-5 text-lg text-muted-foreground">
             We're a web development studio that designs and builds premium
