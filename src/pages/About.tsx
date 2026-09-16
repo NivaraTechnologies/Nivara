@@ -290,7 +290,6 @@
 
 // export default About;
 
-
 import { motion } from "framer-motion";
 
 const values = [
@@ -420,4 +419,3 @@ export function About() {
 }
 
 export default About;
-
