@@ -91,6 +91,127 @@
 
 
 
+// import { motion } from "framer-motion";
+
+// const links = [
+//   { label: "Services", href: "#services" },
+//   { label: "Process", href: "#process" },
+//   { label: "Inquire", href: "#inquire" },
+// ];
+
+// const contact = [
+//   {
+//     label: "nivaratechnologies@gmail.com",
+//     href: "mailto:nivaratechnologies@gmail.com",
+//   },
+//   {
+//     label: "+91 94936 67272",
+//     href: "tel:+919493667272",
+//   },
+// ];
+
+// const socials = [
+//   {
+//     label: "LinkedIn",
+//     href: "https://www.linkedin.com",
+//   },
+//   {
+//     label: "X",
+//     href: "https://x.com",
+//   },
+//   {
+//     label: "GitHub",
+//     href: "https://github.com",
+//   },
+// ];
+
+// export function Footer() {
+//   return (
+//     <motion.footer
+//       initial={{ opacity: 0 }}
+//       whileInView={{ opacity: 1 }}
+//       viewport={{ once: true }}
+//       transition={{ duration: 0.7 }}
+//       className="border-t border-border px-4 py-12"
+//     >
+//       <div className="mx-auto flex w-full max-w-6xl flex-col gap-8 md:flex-row md:items-center md:justify-between">
+//         {/* Logo */}
+//         <div className="flex items-center gap-2.5">
+//           <img
+//             src="/nivara-logo.png"
+//             alt="Nivara Technologies"
+//             className="h-9 w-9 shrink-0"
+//             width={36}
+//             height={36}
+//           />
+//           <div>
+//             <span className="font-display text-xl font-extrabold tracking-[-0.06em]">
+//               <span className="text-brand-navy">NIVARA</span>{" "}
+//               <span className="text-white">Technologies</span>
+//             </span>
+//             <p className="mt-0.5 text-xs text-muted-foreground">
+//               Bridging ideas into digital reality
+//             </p>
+//           </div>
+//         </div>
+
+//         {/* Navigation */}
+//         <nav aria-label="Footer">
+//           <ul className="flex flex-wrap gap-5 text-sm text-muted-foreground">
+//             {links.map((link) => (
+//               <li key={link.label}>
+//                 <a
+//                   href={link.href}
+//                   className="transition-colors hover:text-foreground"
+//                 >
+//                   {link.label}
+//                 </a>
+//               </li>
+//             ))}
+//           </ul>
+//         </nav>
+
+//         {/* Social Links */}
+//         <ul className="flex flex-wrap gap-5 text-sm text-muted-foreground">
+//           {socials.map((social) => (
+//             <li key={social.label}>
+//               <a
+//                 href={social.href}
+//                 target="_blank"
+//                 rel="noreferrer noopener"
+//                 className="transition-colors hover:text-foreground"
+//               >
+//                 {social.label}
+//               </a>
+//             </li>
+//           ))}
+//         </ul>
+
+//         {/* Contact */}
+//         <ul className="flex flex-wrap gap-5 text-sm text-muted-foreground">
+//           {contact.map((item) => (
+//             <li key={item.label}>
+//               <a
+//                 href={item.href}
+//                 className="transition-colors hover:text-foreground"
+//               >
+//                 {item.label}
+//               </a>
+//             </li>
+//           ))}
+//         </ul>
+//       </div>
+
+//       <p className="mx-auto mt-8 w-full max-w-6xl text-xs text-muted-foreground">
+//         Nivara Technologies · © {new Date().getFullYear()}
+//       </p>
+//     </motion.footer>
+//   );
+// }
+
+
+
+
 import { motion } from "framer-motion";
 
 const links = [
@@ -122,6 +243,10 @@ const socials = [
   {
     label: "GitHub",
     href: "https://github.com",
+  },
+  {
+    label: "Instagram",
+    href: "https://www.instagram.com/nivaratechnologies",
   },
 ];
 
@@ -179,6 +304,7 @@ export function Footer() {
                 href={social.href}
                 target="_blank"
                 rel="noreferrer noopener"
+                aria-label={`Nivara Technologies on ${social.label}`}
                 className="transition-colors hover:text-foreground"
               >
                 {social.label}
