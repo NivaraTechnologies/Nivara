@@ -129,7 +129,7 @@ export function Hero({ onInquire }: { onInquire: () => void }) {
         className="mt-10"
       >
         <MagneticButton onClick={onInquire} className="px-8 py-4 text-base">
-          Start a project
+          Discuss your vision
         </MagneticButton>
       </motion.div>
     </section>
