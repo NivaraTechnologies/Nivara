@@ -87,16 +87,11 @@
 //   );
 // }
 
-
-
-
-
 import { createFileRoute } from "@tanstack/react-router";
 import { useState } from "react";
 import { SmoothScroll } from "@/components/nivara/SmoothScroll";
 import { Navbar } from "@/components/nivara/Navbar";
 import { Hero } from "@/components/nivara/Hero";
-import { About } from "@/components/nivara/About";
 import { Services } from "@/components/nivara/Services";
 import { StackRow } from "@/components/nivara/StackRow";
 import { Process } from "@/components/nivara/Process";
@@ -135,7 +130,6 @@ function Index() {
       <Navbar onInquire={() => setOpen(true)} />
       <main>
         <Hero onInquire={() => setOpen(true)} />
-        <About />
         <Services />
         <StackRow />
         <Process />
