@@ -213,7 +213,7 @@ export function About() {
           className="mx-auto flex max-w-4xl flex-col items-center gap-8 rounded-[24px] border border-border bg-card p-8 md:flex-row md:p-10"
         >
           <img
-            src="/team/sai-nithin.jpeg"
+            src="public/team/Sai-nithin.jpeg"
             alt="Sai Nithin, Founder of Nivara Technologies"
             className="h-40 w-40 shrink-0 rounded-2xl object-cover md:h-48 md:w-48"
           />
