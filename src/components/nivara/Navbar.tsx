@@ -401,75 +401,9 @@
 
 
 
-// import { useEffect, useState } from "react";
-// import { motion, useScroll, useTransform, useSpring } from "framer-motion";
-// import { Link } from "@tanstack/react-router";
-// import { MagneticButton } from "./MagneticButton";
-
-// const links = [
-//   { label: "Services", to: "/", hash: "services" },
-//   { label: "Process", to: "/", hash: "process" },
-//   { label: "About", to: "/about" },
-//   { label: "Inquire", to: "/", hash: "inquire" },
-// ];
-
-// const SHRINK_DISTANCE = 220;
-
-// export function Navbar({ onInquire }: { onInquire: () => void }) {
-//   const [scrolled, setScrolled] = useState(false);
-//   const { scrollY } = useScroll();
-//   const smoothScrollY = useSpring(scrollY, { stiffness: 300, damping: 32, mass: 0.5 });
-
-//   const maxWidth = useTransform(smoothScrollY, [0, SHRINK_DISTANCE], ["100%", "48rem"]);
-//   const marginTop = useTransform(smoothScrollY, [0, SHRINK_DISTANCE], ["0rem", "1rem"]);
-//   const paddingX = useTransform(smoothScrollY, [0, SHRINK_DISTANCE], ["1.5rem", "0.75rem"]);
-//   const radius = useTransform(smoothScrollY, [0, SHRINK_DISTANCE], ["0px", "999px"]);
-
-//   useEffect(() => {
-//     const onScroll = () => setScrolled(window.scrollY > 40);
-//     onScroll();
-//     window.addEventListener("scroll", onScroll, { passive: true });
-//     return () => window.removeEventListener("scroll", onScroll);
-//   }, []);
-
-//   return (
-//     <motion.header
-//       initial={{ y: -28, opacity: 0 }}
-//       animate={{ y: 0, opacity: 1 }}
-//       transition={{ delay: 0.35, duration: 0.7, ease: [0.16, 1, 0.3, 1] }}
-//       style={{ maxWidth, marginTop, paddingLeft: paddingX, paddingRight: paddingX, borderRadius: radius }}
-//       className={`fixed inset-x-0 top-0 z-50 mx-auto flex items-center gap-3 border py-2 transition-colors duration-500 ${scrolled ? "border-border-strong bg-[oklch(0.145_0.012_254.3_/_82%)] backdrop-blur-xl" : "border-transparent bg-[oklch(0.215_0.022_254.3_/_50%)] backdrop-blur-md"}`}
-//     >
-//       <Link to="/" hash="top" className="ml-1 flex shrink-0 items-center gap-2">
-//         <img src="/nivara-logo.png" alt="Nivara Technologies" className="h-8 w-8 shrink-0" width={32} height={32} />
-//         <span className="font-display text-lg font-extrabold tracking-[-0.06em]">
-//           <span className="text-brand-navy">NIVARA</span> <span className="hidden text-white sm:inline">Technologies</span>
-//         </span>
-//       </Link>
-//       <ul className="ml-auto hidden items-center gap-1 sm:flex">
-//         {links.map((l) => (
-//           <li key={l.label}>
-//             <Link
-//               to={l.to}
-//               hash={l.hash}
-//               className="rounded-full px-4 py-2 text-sm text-muted-foreground transition-colors hover:bg-[oklch(1_0_0_/_5%)] hover:text-foreground"
-//             >
-//               {l.label}
-//             </Link>
-//           </li>
-//         ))}
-//       </ul>
-//       <MagneticButton onClick={onInquire} className="ml-auto px-5 py-2 text-xs sm:ml-2" radius={6}>
-//         Let&apos;s Talk
-//       </MagneticButton>
-//     </motion.header>
-//   );
-// }
-
-
 import { useEffect, useState } from "react";
 import { motion, useScroll, useTransform, useSpring } from "framer-motion";
-import { Link, useLocation } from "@tanstack/react-router";
+import { Link } from "@tanstack/react-router";
 import { MagneticButton } from "./MagneticButton";
 
 const links = [
@@ -486,35 +420,10 @@ export function Navbar({ onInquire }: { onInquire: () => void }) {
   const { scrollY } = useScroll();
   const smoothScrollY = useSpring(scrollY, { stiffness: 300, damping: 32, mass: 0.5 });
 
-  const location = useLocation();
-  const isHome = location.pathname === "/";
-
-  // Scroll-driven interpolation only makes sense on the home page (it has
-  // the tall hero to shrink away from). On every other route there's no
-  // equivalent scroll runway, and window.scrollY resets to 0 on navigation
-  // anyway — which was why the navbar snapped back to full width whenever
-  // you clicked "About". On non-home routes we just pin it to the
-  // already-shrunk pill state so it matches the other nav links visually.
   const maxWidth = useTransform(smoothScrollY, [0, SHRINK_DISTANCE], ["100%", "48rem"]);
   const marginTop = useTransform(smoothScrollY, [0, SHRINK_DISTANCE], ["0rem", "1rem"]);
   const paddingX = useTransform(smoothScrollY, [0, SHRINK_DISTANCE], ["1.5rem", "0.75rem"]);
   const radius = useTransform(smoothScrollY, [0, SHRINK_DISTANCE], ["0px", "999px"]);
-
-  const shrunkStyle = {
-    maxWidth: "48rem",
-    marginTop: "1rem",
-    paddingLeft: "0.75rem",
-    paddingRight: "0.75rem",
-    borderRadius: "999px",
-  } as const;
-
-  const homeStyle = {
-    maxWidth,
-    marginTop,
-    paddingLeft: paddingX,
-    paddingRight: paddingX,
-    borderRadius: radius,
-  };
 
   useEffect(() => {
     const onScroll = () => setScrolled(window.scrollY > 40);
@@ -523,19 +432,13 @@ export function Navbar({ onInquire }: { onInquire: () => void }) {
     return () => window.removeEventListener("scroll", onScroll);
   }, []);
 
-  const isScrolledLook = isHome ? scrolled : true;
-
   return (
     <motion.header
       initial={{ y: -28, opacity: 0 }}
       animate={{ y: 0, opacity: 1 }}
       transition={{ delay: 0.35, duration: 0.7, ease: [0.16, 1, 0.3, 1] }}
-      style={isHome ? homeStyle : shrunkStyle}
-      className={`fixed inset-x-0 top-0 z-50 mx-auto flex items-center gap-3 border py-2 transition-[background-color,border-color,max-width,margin,padding,border-radius] duration-500 ${
-        isScrolledLook
-          ? "border-border-strong bg-[oklch(0.145_0.012_254.3_/_82%)] backdrop-blur-xl"
-          : "border-transparent bg-[oklch(0.215_0.022_254.3_/_50%)] backdrop-blur-md"
-      }`}
+      style={{ maxWidth, marginTop, paddingLeft: paddingX, paddingRight: paddingX, borderRadius: radius }}
+      className={`fixed inset-x-0 top-0 z-50 mx-auto flex items-center gap-3 border py-2 transition-colors duration-500 ${scrolled ? "border-border-strong bg-[oklch(0.145_0.012_254.3_/_82%)] backdrop-blur-xl" : "border-transparent bg-[oklch(0.215_0.022_254.3_/_50%)] backdrop-blur-md"}`}
     >
       <Link to="/" hash="top" className="ml-1 flex shrink-0 items-center gap-2">
         <img src="/nivara-logo.png" alt="Nivara Technologies" className="h-8 w-8 shrink-0" width={32} height={32} />
@@ -562,3 +465,4 @@ export function Navbar({ onInquire }: { onInquire: () => void }) {
     </motion.header>
   );
 }
+
